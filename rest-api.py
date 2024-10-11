@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from groq import Groq
 import uvicorn
 import logging
+from typing import Union
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -15,7 +16,7 @@ DEFAULT_MODEL = "llama3-70b-8192"
 class RequestBody(BaseModel):
     text: str
     auth_key: str
-    option: dict | None = None
+    option: Union[dict, None] = None
 
 # Initialize FastAPI app
 app = FastAPI()
